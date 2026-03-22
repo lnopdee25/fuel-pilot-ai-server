@@ -7,7 +7,9 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: OLLAMA_HOST
-        value: 0.0.0.0:11434
+        value: 0.0.0.0:10000
+      - key: PORT
+        value: "10000"
     disk:
       name: ollama-models
       mountPath: /root/.ollama
