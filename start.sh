@@ -19,7 +19,7 @@ for i in $(seq 1 60); do
 done
 
 # Use phi3 — lightweight but capable, fits in 4GB RAM
-MODEL="phi3"
+MODEL="tinyllama"
 
 if ! ollama list 2>/dev/null | grep -q "$MODEL"; then
   echo "Pulling $MODEL model..."
