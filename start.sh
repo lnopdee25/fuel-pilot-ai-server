@@ -18,16 +18,18 @@ for i in $(seq 1 60); do
   sleep 2
 done
 
-# Pull the Mistral model if not already present
-if ! ollama list 2>/dev/null | grep -q "mistral"; then
-  echo "Pulling Mistral model (this may take a few minutes on first deploy)..."
-  ollama pull mistral
-  echo "Mistral model ready."
+# Use phi3 — lightweight but capable, fits in 4GB RAM
+MODEL="phi3"
+
+if ! ollama list 2>/dev/null | grep -q "$MODEL"; then
+  echo "Pulling $MODEL model..."
+  ollama pull "$MODEL"
+  echo "$MODEL model ready."
 else
-  echo "Mistral model already available."
+  echo "$MODEL model already available."
 fi
 
-echo "FuelPilot AI server is ready."
+echo "FuelPilot AI server is ready with $MODEL."
 
 # Keep the server running
 wait $SERVER_PID
